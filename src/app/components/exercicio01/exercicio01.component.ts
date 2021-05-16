@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class Exercicio01Component implements OnInit {
   counter = 0;
   intervalId;
+  botao = "Iniciar";
 
   constructor() { }
 
@@ -15,13 +16,20 @@ export class Exercicio01Component implements OnInit {
 
   numero(){
     if(this.counter<60) this.counter++;
-    else clearInterval(this.intervalId);;
+    else clearInterval(this.intervalId);
   }
 
   iniciar(){
-    let intervalId = setInterval(() => {
-      this.numero();
-  }, 1000)
+    if(this.botao!="Pare"){
+      this.botao="Pare"
+      let intervalId = setInterval(() => {
+        this.numero();
+      }, 1000)
+    }else{
+      clearInterval(this.intervalId);
+      this.counter = 0;
+      this.botao="Iniciar";
+    }
   }
 
 }
