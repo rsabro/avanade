@@ -16,18 +16,20 @@ export class Exercicio01Component implements OnInit {
 
   numero(){
     if(this.counter<60) this.counter++;
-    else clearInterval(this.intervalId);
+    else{
+      clearInterval(this.intervalId);
+      this.botao="Iniciar";
+    }
   }
 
   iniciar(){
     if(this.botao!="Pare"){
       this.botao="Pare"
-      let intervalId = setInterval(() => {
+      this.intervalId = setInterval(() => {
         this.numero();
       }, 1000)
     }else{
       clearInterval(this.intervalId);
-      this.counter = 0;
       this.botao="Iniciar";
     }
   }
