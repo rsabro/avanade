@@ -6,11 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./exercicio01.component.scss']
 })
 export class Exercicio01Component implements OnInit {
-  tempo: string;
+  counter = 0;
+  intervalId;
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  numero(){
+    if(this.counter<60) this.counter++;
+    else clearInterval(this.intervalId);;
+  }
+
+  iniciar(){
+    let intervalId = setInterval(() => {
+      this.numero();
+  }, 1000)
   }
 
 }
+
